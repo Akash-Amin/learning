@@ -1,7 +1,7 @@
-
-
 import React,{useEffect,useState} from 'react';
 import axios from "axios";
+//import "./design.css";
+import  "./design.css";
 
 function ApiRequest() {
 
@@ -11,10 +11,13 @@ function ApiRequest() {
 
 
     let [data,setData]=useState([]);
-    
    let [selectedBreed,setSelectedBreed]=useState("appenzeller");
    let [images,setImages]=useState([]);
    let [selectedSubBreed,setSelectedSubBreed]=useState([]);
+   let [length,setLength]=useState();
+   let [selectedSubBreedImages,setSelectedSubBreedImages]=useState([ ]);
+   
+   let [selectedBreedImage,setSelectedBreedImage]=useState([ ]);
 
     useEffect(() => {
         
@@ -22,7 +25,7 @@ function ApiRequest() {
     
     
     let key=Object.keys(res.message);
-    console.warn("keys",key)
+    //console.warn("keys",key)
    setData(key)
 
 
@@ -47,10 +50,21 @@ function ApiRequest() {
               // setImages(prev=>[...res.data.message])
           // }
            //console.log(images.length)
-//console.log(res.data.message.length)
-console.log(res.data.message)
+console.log(res.data.message.length)
+setLength(res.data.message.length)
+//console.log("FFFF",res.data)
 setSelectedSubBreed(res.data.message)
        })
+
+       var URL2 =`https://dog.ceo/api/breed/${selectedBreed}/images`;
+       axios.get(URL2)
+       .then(res=>{
+       setSelectedBreedImage(res.data.message)
+      // console.log(res.data.message)
+       //console.log("aaaaa",selectedBreedImage)
+       
+       })
+     
     }
 
 
@@ -63,7 +77,8 @@ setSelectedSubBreed(res.data.message)
     
     let i=0; 
     let j=0; 
-
+    let k=0;
+{/*}
     
     function loadSubBreed(){
        var URL = `https://dog.ceo/api/breed/${selectedBreed}/list`;
@@ -76,12 +91,16 @@ setSelectedSubBreed(res.data.message)
 //setSelectedSubBreed(res.data.message)
 console.log(res.data)
     })}
-   
+*/}
 
     return (
-        <div>       
-        <div>
-          <select name="select" onChange={
+        <div className="main">       
+        <h1 className="main-heading">DOG-WORLD</h1>
+      
+        <div className="breed-select-main">
+       
+       
+          <select className="breed-select" name="select" onChange={
                (e)=>{
                    setSelectedBreed(e.target.value);
                  
@@ -96,8 +115,11 @@ console.log(res.data)
                   data.map(dat=> <option>{data[i++]}</option>)
               }
            </select>
+           <h4 className="breed-count">TOTAL SUB BREEDS   -    {length}</h4>
+       
            </div>
-           <div>
+           <div className="breed-count-data" >
+           {/*}
            <select name="selectedSubBreed" onChange={
                (e)=>{
                    setSelectedSubBreed(e.target.value);
@@ -108,152 +130,36 @@ console.log(res.data)
 
                }
                
-           }>
+           }>*/}
+         <ul className="breed-count-data">
          
            {
             selectedSubBreed.map(dat=> <option>{selectedSubBreed[j++]}</option>)
               }
-           </select>
+              </ul>
+          {/*} </select>*/}
            </div>
+           <div className="image-main">
+        
+      
+        <div className="image-sub">
+               {
+                   
+                selectedBreedImage.map(i=>{
+                       return (
+                           <img className="all-img" src={selectedBreedImage[k++]}/>
+                       )
+                   })
+                   
+               }
+               </div>
+        </div>
 
         </div>
             
         
         )
-        
-      {/*}  const [num,setNum]=useState();
-
-        useEffect(()=>{
-            async function getData(){
-                const res = await axios.get("https://dog.ceo/api/breeds/list/all")
-            }
-
-        });
-    */}
-        
 
 }
 
 export default ApiRequest;
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-//function ApiRequest() {
-/*
-async function start(){
-    const response=await fetch("https://dog.ceo/api/breeds/list/all")
-    const data=await response.json()
-    createBreadList(data.message)
-}
-start()
-
-function createBreadList(breedList){
-
-}
-
-}
-
-export default createBreadList;
-
-/*import React,{useEffect,useState} from 'react';
-//import axios from "axios";
-
-function ApiRequest() {
-
-
-
-
-
-
-   // let [data,setData]=useState([])
-
-   // useEffect(() => {
-        
-  //  fetch("https://dog.ceo/api/breeds/list/all").then((result)=>{result.json().then((res)=>{ console.warn("result",res.message)
-   // setData(res) })
-
-  {/*}
-    let key=Object.keys(res.message);
-
-
-    console.warn("keys",key)
-    setData(key)
-    console.warn("sss",key[0])
-    
-    
-   //console.warn("aaa",res.message.key)
-  // setData(res.message)
-   //let change=JSON.parse(data);
-   //console.warn("change",change);
-
-   // let change=JSON.parse(res.message);
-    //console.warn("change",change)
-  //  })
-  //  })}, [])
-   
-
-    return (
-        <div>        
-         <ul>
-              {
-                  data.map(dat=> <li>{dat}</li>)
-              }
-          </ul>
-
-          <ul>
-              <h1>jj</h1>
-          </ul>
-          
-        </div>
-        )
-        
-        const [num,setNum]=useState();
-
-        useEffect(()=>{
-            async function getData(){
-                const res = await axios.get("https://dog.ceo/api/breeds/list/all")
-            }
-
-        });
-        
-
-}
-
-export default ApiRequest;*/
-
-
-
-
-
-
-
-
-/*
-
-    
-    function loadImages(){
-        
-        var URL = `https://dog.ceo/api/breed/${selectedBreed}/images`;
-        axios.get(URL)
-       .then(res=>{
-         //  var tempImages=[];
-          // for (var a in res.data.message){
-            //   tempImages.push(a)
-              // setImages(prev=>[...res.data.message])
-          // }
-           //console.log(images.length)
-//console.log(res.data.message.length)
-console.log(res)
-       })
-    }
-    */

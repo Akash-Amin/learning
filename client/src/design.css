@@ -1,0 +1,72 @@
+.image-main
+{
+    background-color: rgb(243, 238, 238);
+    
+    
+    margin-top: 10px;
+}
+
+.all-img
+{
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+    border: 3px solid black;
+}
+
+.image-sub
+{
+    background-color: rgb(213, 196, 196);
+    
+    text-align: center;
+    
+}
+.main{
+    background-color: rgb(207, 232, 233);
+
+}
+.main-heading
+{
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(243, 245, 241);
+    border: 2px solid black;
+  
+}
+
+.breed-select
+{
+    
+    padding: 4px;
+    font-size: 20px;
+    font-size: 20px;
+
+    border-radius: 4px;
+background: #d5d2d2;
+box-shadow: inset 5px 5px 10px #908c8c,
+            inset -5px -5px 10px #fdf9f9;
+   
+}
+.breed-select-main
+{
+    background-color: rgb(235, 220, 220);
+    text-align: center;
+
+
+}
+.breed-count
+{
+    background-color: rgb(201, 187, 201);
+    border: 2px solid black;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.breed-count-data
+{
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 4px;
+    padding-bottom:4px ;
+    background-color: rgb(213, 218, 205);
+}
